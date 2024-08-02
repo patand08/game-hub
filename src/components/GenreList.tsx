@@ -17,6 +17,10 @@ interface Props {
 }
 
 const GenreList = ({ onSelection, selectedGenre }: Props) => {
+  const hoverDivStyle = {
+    cursor: "pointer",
+  };
+
   const { data, loading, error } = useGenres();
 
   if (error) return null;
@@ -32,7 +36,12 @@ const GenreList = ({ onSelection, selectedGenre }: Props) => {
     <List>
       {data.map((genre) => (
         <ListItem key={genre.id} paddingY="5px">
-          <HStack>
+          <HStack
+            onClick={() => {
+              onSelection(genre);
+            }}
+            style={hoverDivStyle}
+          >
             <Image
               boxSize="32px"
               borderRadius={8}
