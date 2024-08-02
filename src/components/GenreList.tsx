@@ -24,7 +24,7 @@ const GenreList = ({ onSelection, selectedGenre }: Props) => {
   if (loading)
     return (
       <Box paddingTop={4} justifyContent="center">
-        <BarLoader color="#2d3748" height="6" width="100%" />
+        <BarLoader color="#2d3748" height="6px" width="100%" />
       </Box>
     );
 
