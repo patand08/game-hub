@@ -1,4 +1,12 @@
-import { Box, Button, HStack, Image, List, ListItem } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  HStack,
+  Image,
+  List,
+  ListItem,
+  Text,
+} from "@chakra-ui/react";
 import useGenres, { Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 import { BarLoader } from "react-spinners";
@@ -31,7 +39,6 @@ const GenreList = ({ onSelection, selectedGenre }: Props) => {
               src={getCroppedImageUrl(genre.image_background)}
             />
             <Button
-              isTruncated
               fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
               fontSize="lg"
               variant="link"
@@ -39,7 +46,7 @@ const GenreList = ({ onSelection, selectedGenre }: Props) => {
                 onSelection(genre);
               }}
             >
-              {genre.name}
+              <Text isTruncated>{genre.name}</Text>
             </Button>
           </HStack>
         </ListItem>
