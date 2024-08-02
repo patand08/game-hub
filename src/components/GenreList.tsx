@@ -1,9 +1,19 @@
-import { HStack, Image, List, ListItem, Text } from "@chakra-ui/react";
+import { Box, HStack, Image, List, ListItem, Text } from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
+import { BarLoader } from "react-spinners";
 
 const GenreList = () => {
-  const { data } = useGenres();
+  const { data, loading, error } = useGenres();
+
+  if (error) return null;
+
+  if (loading)
+    return (
+      <Box paddingTop={4} justifyContent="center">
+        <BarLoader color="#2d3748" height="6" width="100%" />
+      </Box>
+    );
 
   return (
     <List>
