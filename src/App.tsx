@@ -52,7 +52,7 @@ function App() {
             }
             selectedPlatform={gameQuery.platform}
           />
-          <Box marginLeft={5}>
+          <Box>
             <SortSelector
               onSelectSortOrder={(sortOrder) =>
                 setGameQuery({ ...gameQuery, sortOrder })

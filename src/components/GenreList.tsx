@@ -10,9 +10,10 @@ import {
 import useGenres, { Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 import { BarLoader } from "react-spinners";
+import { AiFillCloseCircle } from "react-icons/ai";
 
 interface Props {
-  onSelection: (genre: Genre) => void;
+  onSelection: (genre: Genre | null) => void;
   selectedGenre: Genre | null;
 }
 
@@ -33,34 +34,50 @@ const GenreList = ({ onSelection, selectedGenre }: Props) => {
     );
 
   return (
-    <List>
-      {data.map((genre) => (
-        <ListItem key={genre.id} paddingY="5px">
-          <HStack
-            onClick={() => {
-              onSelection(genre);
-            }}
-            style={hoverDivStyle}
-          >
-            <Image
-              boxSize="32px"
-              borderRadius={8}
-              src={getCroppedImageUrl(genre.image_background)}
-            />
-            <Button
-              fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
-              fontSize="lg"
-              variant="link"
+    <>
+      <List>
+        {data.map((genre) => (
+          <ListItem key={genre.id} paddingY="5px">
+            <HStack
               onClick={() => {
                 onSelection(genre);
               }}
+              style={hoverDivStyle}
             >
-              <Text isTruncated>{genre.name}</Text>
-            </Button>
-          </HStack>
-        </ListItem>
-      ))}
-    </List>
+              <Image
+                boxSize="32px"
+                borderRadius={8}
+                src={getCroppedImageUrl(genre.image_background)}
+              />
+              <Button
+                fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+                fontSize="lg"
+                variant="link"
+                onClick={() => {
+                  onSelection(genre);
+                }}
+              >
+                <Text isTruncated>{genre.name}</Text>
+              </Button>
+            </HStack>
+          </ListItem>
+        ))}
+      </List>
+      {selectedGenre && (
+        <Button
+          fontWeight="normal"
+          fontSize="lg"
+          variant="link"
+          leftIcon={<AiFillCloseCircle size="20px" />}
+          padding="6px"
+          onClick={() => {
+            onSelection(null);
+          }}
+        >
+          Clear
+        </Button>
+      )}
+    </>
   );
 };
 
