@@ -23,11 +23,11 @@ const GenreList = ({ onSelection, selectedGenre }: Props) => {
     cursor: "pointer",
   };
 
-  const { data, loading, error } = useGenres();
+  const { data, isLoading, error } = useGenres();
 
   if (error) return null;
 
-  if (loading)
+  if (isLoading)
     return (
       <Box paddingTop={4} justifyContent="center">
         <BarLoader color="#2d3748" height="6px" width="100%" />
@@ -40,7 +40,7 @@ const GenreList = ({ onSelection, selectedGenre }: Props) => {
         Genres
       </Heading>
       <List>
-        {data.map((genre) => (
+        {data?.results.map((genre) => (
           <ListItem key={genre.id} paddingY="5px">
             <HStack
               onClick={() => {
