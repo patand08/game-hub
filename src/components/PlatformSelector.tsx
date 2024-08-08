@@ -9,21 +9,23 @@ import {
 import { BsChevronDown } from "react-icons/bs";
 import usePlatforms, { Platform } from "../hooks/usePlatforms";
 import { AiFillCloseCircle } from "react-icons/ai";
+import usePlatform from "../hooks/usePlatform";
 
 interface Props {
   onSelectPlatform: (platform: Platform | null) => void;
-  selectedPlatform: Platform | null;
+  selectedPlatformId?: number;
 }
 
-const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
+const PlatformSelector = ({ onSelectPlatform, selectedPlatformId }: Props) => {
   const { data, error } = usePlatforms();
+  const platform = usePlatform(selectedPlatformId);
 
   if (error) return null;
   return (
-    <Flex marginRight={selectedPlatform ? 1 : 5} alignContent="center">
+    <Flex marginRight={selectedPlatformId ? 1 : 5} alignContent="center">
       <Menu>
         <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-          {selectedPlatform?.name || "Platforms"}
+          {platform?.name || "Platforms"}
         </MenuButton>
         <MenuList>
           {data?.results.map((plat) => (
@@ -33,7 +35,7 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
           ))}
         </MenuList>
       </Menu>
-      {selectedPlatform && (
+      {selectedPlatformId && (
         <Button
           variant="link"
           marginLeft={1}

@@ -15,10 +15,10 @@ import { AiFillCloseCircle } from "react-icons/ai";
 
 interface Props {
   onSelection: (genre: Genre | null) => void;
-  selectedGenre: Genre | null;
+  selectedGenreId?: number;
 }
 
-const GenreList = ({ onSelection, selectedGenre }: Props) => {
+const GenreList = ({ onSelection, selectedGenreId }: Props) => {
   const hoverDivStyle = {
     cursor: "pointer",
   };
@@ -55,7 +55,7 @@ const GenreList = ({ onSelection, selectedGenre }: Props) => {
                 src={getCroppedImageUrl(genre.image_background)}
               />
               <Button
-                fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+                fontWeight={genre.id === selectedGenreId ? "bold" : "normal"}
                 whiteSpace="normal"
                 textAlign="left"
                 fontSize="lg"
@@ -70,7 +70,7 @@ const GenreList = ({ onSelection, selectedGenre }: Props) => {
           </ListItem>
         ))}
       </List>
-      {selectedGenre && (
+      {selectedGenreId && (
         <Button
           fontWeight="normal"
           fontSize="lg"
