@@ -8,20 +8,18 @@ import {
   ListItem,
 } from "@chakra-ui/react";
 import { BarLoader } from "react-spinners";
-import useGenres, { Genre } from "../hooks/useGenres";
+import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
+import useGameQueryStore from "../store.ts/store";
 
-interface Props {
-  onSelection: (genre: Genre | null) => void;
-  selectedGenreId?: number;
-}
-
-const GenreList = ({ onSelection, selectedGenreId }: Props) => {
+const GenreList = () => {
   const hoverDivStyle = {
     cursor: "pointer",
   };
 
   const { data, isLoading, error } = useGenres();
+  const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
+  const setGenreId = useGameQueryStore((s) => s.setGenreId);
 
   if (error) return null;
 
@@ -45,7 +43,7 @@ const GenreList = ({ onSelection, selectedGenreId }: Props) => {
             colorScheme="gray"
             size="sm"
             onClick={() => {
-              onSelection(null);
+              setGenreId(undefined);
             }}
             title="Clear genre"
           >
@@ -58,7 +56,7 @@ const GenreList = ({ onSelection, selectedGenreId }: Props) => {
           <ListItem key={genre.id} paddingY="5px">
             <HStack
               onClick={() => {
-                onSelection(genre);
+                setGenreId(genre.id);
               }}
               style={hoverDivStyle}
             >
@@ -75,7 +73,7 @@ const GenreList = ({ onSelection, selectedGenreId }: Props) => {
                 fontSize="lg"
                 variant="link"
                 onClick={() => {
-                  onSelection(genre);
+                  setGenreId(genre.id);
                 }}
               >
                 {genre.name}
