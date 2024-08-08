@@ -7,9 +7,8 @@ import {
   MenuList,
 } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
-import usePlatforms, { Platform } from "../hooks/usePlatforms";
-import { AiFillCloseCircle } from "react-icons/ai";
 import usePlatform from "../hooks/usePlatform";
+import usePlatforms, { Platform } from "../hooks/usePlatforms";
 
 interface Props {
   onSelectPlatform: (platform: Platform | null) => void;
@@ -22,7 +21,7 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatformId }: Props) => {
 
   if (error) return null;
   return (
-    <Flex marginRight={selectedPlatformId ? 1 : 5} alignContent="center">
+    <Flex marginRight={5} alignContent="center">
       <Menu>
         <MenuButton as={Button} rightIcon={<BsChevronDown />}>
           {platform?.name || "Platforms"}
@@ -37,13 +36,16 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatformId }: Props) => {
       </Menu>
       {selectedPlatformId && (
         <Button
-          variant="link"
-          marginLeft={1}
+          fontWeight="bold"
+          fontSize="md"
+          colorScheme="gray"
+          marginLeft={5}
           onClick={() => {
             onSelectPlatform(null);
           }}
+          title="Clear platform"
         >
-          <AiFillCloseCircle size="20px" />
+          Clear
         </Button>
       )}
     </Flex>

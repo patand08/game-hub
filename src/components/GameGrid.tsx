@@ -1,6 +1,7 @@
-import { SimpleGrid, Spinner, Text } from "@chakra-ui/react";
+import { Box, SimpleGrid, Text } from "@chakra-ui/react";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { BeatLoader } from "react-spinners";
 import { GameQuery } from "../App";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
@@ -19,7 +20,7 @@ const GameGrid = ({ gameQuery }: Props) => {
     fetchNextPage,
     hasNextPage,
   } = useGames(gameQuery);
-  const skeletons = [1, 2, 3, 4, 5, 6];
+  const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
   if (error) return <Text>{error.message}</Text>;
 
@@ -31,7 +32,11 @@ const GameGrid = ({ gameQuery }: Props) => {
       dataLength={fetchedGamesCount}
       hasMore={!!hasNextPage}
       next={() => fetchNextPage()}
-      loader={<Spinner />}
+      loader={
+        <Box padding="10px" justifyContent="center">
+          <BeatLoader color="#2d3748" margin={5} size={15} />
+        </Box>
+      }
     >
       <SimpleGrid
         columns={{ sm: 1, md: 2, lg: 3, "2xl": 4 }}

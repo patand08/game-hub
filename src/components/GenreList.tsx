@@ -6,12 +6,10 @@ import {
   Image,
   List,
   ListItem,
-  Text,
 } from "@chakra-ui/react";
+import { BarLoader } from "react-spinners";
 import useGenres, { Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
-import { BarLoader } from "react-spinners";
-import { AiFillCloseCircle } from "react-icons/ai";
 
 interface Props {
   onSelection: (genre: Genre | null) => void;
@@ -36,9 +34,25 @@ const GenreList = ({ onSelection, selectedGenreId }: Props) => {
 
   return (
     <>
-      <Heading fontSize="2xl" marginBottom={2}>
-        Genres
-      </Heading>
+      <HStack justifyContent={"space-between"}>
+        <Heading fontSize="2xl" marginBottom={2}>
+          Genres
+        </Heading>
+        {selectedGenreId && (
+          <Button
+            fontWeight="bold"
+            fontSize="md"
+            colorScheme="gray"
+            size="sm"
+            onClick={() => {
+              onSelection(null);
+            }}
+            title="Clear genre"
+          >
+            Clear
+          </Button>
+        )}
+      </HStack>
       <List>
         {data?.results.map((genre) => (
           <ListItem key={genre.id} paddingY="5px">
@@ -70,20 +84,6 @@ const GenreList = ({ onSelection, selectedGenreId }: Props) => {
           </ListItem>
         ))}
       </List>
-      {selectedGenreId && (
-        <Button
-          fontWeight="normal"
-          fontSize="lg"
-          variant="link"
-          leftIcon={<AiFillCloseCircle size="20px" />}
-          padding="6px"
-          onClick={() => {
-            onSelection(null);
-          }}
-        >
-          Clear
-        </Button>
-      )}
     </>
   );
 };
