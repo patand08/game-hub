@@ -1,5 +1,4 @@
 import {
-  Box,
   Button,
   Heading,
   HStack,
@@ -7,10 +6,10 @@ import {
   List,
   ListItem,
 } from "@chakra-ui/react";
-import { BarLoader } from "react-spinners";
 import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 import useGameQueryStore from "../store.ts/store";
+import BarLoarder from "./BarLoarder";
 
 const GenreList = () => {
   const hoverDivStyle = {
@@ -23,12 +22,7 @@ const GenreList = () => {
 
   if (error) return null;
 
-  if (isLoading)
-    return (
-      <Box paddingTop={4} justifyContent="center">
-        <BarLoader color="#2d3748" height="6px" width="100%" />
-      </Box>
-    );
+  if (isLoading) return <BarLoarder />;
 
   return (
     <>
