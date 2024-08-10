@@ -4,6 +4,7 @@ import BarLoarder from "../components/BarLoarder";
 import ExpandableText from "../components/ExpandableText";
 import GameAttributes from "../components/GameAttributes";
 import useGame from "../hooks/useGame";
+import GameTrailer from "../components/GameTrailer";
 
 const GameDetailPage = () => {
   const { slug } = useParams();
@@ -24,6 +25,7 @@ const GameDetailPage = () => {
       <ExpandableText>{game.description_raw}</ExpandableText>
 
       <GameAttributes game={game} />
+      <GameTrailer gameId={game.id} />
     </>
   );
 };
