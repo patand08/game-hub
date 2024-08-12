@@ -12,10 +12,6 @@ import useGameQueryStore from "../store.ts/store";
 import BarLoarder from "./BarLoarder";
 
 const GenreList = () => {
-  const hoverDivStyle = {
-    cursor: "pointer",
-  };
-
   const { data, isLoading, error } = useGenres();
   const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
   const setGenreId = useGameQueryStore((s) => s.setGenreId);
@@ -52,7 +48,7 @@ const GenreList = () => {
               onClick={() => {
                 setGenreId(genre.id);
               }}
-              style={hoverDivStyle}
+              _hover={{ cursor: "pointer" }}
             >
               <Image
                 boxSize="32px"

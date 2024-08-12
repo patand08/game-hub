@@ -5,11 +5,7 @@ interface Props {
 }
 
 const CriticScore = ({ score }: Props) => {
-  let color = score > 75 ? "green" : score > 50 ? "yellow" : "red";
-
-  const hoverDivStyle = {
-    cursor: "default",
-  };
+  let color = score > 80 ? "green" : score > 50 ? "yellow" : "red";
 
   return (
     <Badge
@@ -18,7 +14,7 @@ const CriticScore = ({ score }: Props) => {
       paddingX={2}
       borderRadius="4px"
       title={"Metacritic score: " + score}
-      style={hoverDivStyle}
+      _hover={{ cursor: "pointer" }}
     >
       {score}
     </Badge>
