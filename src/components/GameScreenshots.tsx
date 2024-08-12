@@ -50,6 +50,7 @@ export const GameScreenshots = ({ gameId }: Props) => {
             _hover={{
               transform: "scale(1.02)",
               transition: "transform .15s ease-in",
+              cursor: "pointer",
             }}
             borderRadius={5}
             onClick={() => {
