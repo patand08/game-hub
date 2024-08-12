@@ -4,12 +4,14 @@ Stack: React.js, Chakra UI, React-Query, React Router and zustand
 
 My Changes:
 
-- React spinnner
-- buttons for clearing the queries
-- removing the emojis (so ugly, sorry)
+- used react spinnner
+- added buttons for clearing the queries
+- removed the emojis (so ugly, sorry)
 - adding a drawer for selecting genres on small devices
-- changing some icons and placements
-- ability to zoom in game images
-- better clicking area of many props (cards, genres, images, etc...)
+- changed some icons and placements
+- added ability to zoom in game images
+- better clicking areas and navigation of many props (cards, genres, images, etc...)
+- added return button from detail page
+- added github button
 
 Vercel deploy: https://game-hub-henna-delta.vercel.app/
