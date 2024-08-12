@@ -27,7 +27,14 @@ export const GameScreenshots = ({ gameId }: Props) => {
 
   return (
     <>
-      <Modal isOpen={isOpen} onClose={onClose} isCentered>
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        isCentered
+        allowPinchZoom
+        closeOnEsc
+        size="5xl"
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalCloseButton />
@@ -48,6 +55,7 @@ export const GameScreenshots = ({ gameId }: Props) => {
             onClick={() => {
               setImage(file);
               onOpen();
+              console.log(image);
             }}
           />
         ))}
