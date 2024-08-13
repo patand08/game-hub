@@ -1,4 +1,4 @@
-This is a project from Code With Mosh's React training part 1 (finished) and part 2 (finished). I took the liberty to do some small changes, but overall it's the same project as the one presented on the course.
+Decided to take the React course by Code With Mosh to review and update my knowledge on React.js. This is a project from the training part 1 (finished) and 2 (finished). I took the liberty to do some small changes, but overall it's the same project as the one presented on the course.
 
 Stack: React.js, Chakra UI, React-Query, React Router and zustand
 
