@@ -13,5 +13,6 @@ My Changes:
 - better clicking areas and navigation of many props (cards, genres, images, etc...)
 - added return button from detail page
 - added github button
+- skeleton loader for game detail page
 
 Vercel deploy: https://game-hub-henna-delta.vercel.app/
