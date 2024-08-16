@@ -7,17 +7,13 @@ import GameAttributes from "../components/GameAttributes";
 import { GameScreenshots } from "../components/GameScreenshots";
 import GameTrailer from "../components/GameTrailer";
 import useGame from "../hooks/useGame";
+import GameDetailSkeleton from "../components/GameDetailSkeleton";
 
 const GameDetailPage = () => {
   const { slug } = useParams();
   const { data: game, isLoading, error } = useGame(slug!);
 
-  if (isLoading)
-    return (
-      <Box paddingX={5}>
-        <BarLoarder />
-      </Box>
-    );
+  if (isLoading) return <GameDetailSkeleton />;
 
   if (error || !game) throw error;
 
